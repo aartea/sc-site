@@ -44,6 +44,38 @@
 -Hans Albers</h1>
 </div>
 
+<h2><i><font color="447e45">Contact Us</font></i></h2>
+
+	<div id="formwrapper">
+	<form>
+		<div class="form-row">
+			<div class="col">
+				<label for="firstName">First Name </label>
+				<input type="text" class="form-control" placeholder="First name">
+			</div>
+			<div class="col">
+				<label for="lastName">Last Name </label>
+				<input type="text" class="form-control" placeholder="Last name">
+			</div>
+		</div>
+	  <div class="form-group">
+	    <label for="inputEmail">Email address</label>
+	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+		<div class="form-group">
+		    <label for="textArea">Message</label>
+		    <textarea class="form-control" id="textArea" rows="3">Write something here..</textarea>
+		  </div>
+	  <button type="submit" class="btn btn-primary" onclick="saveToFirebase()">Submit</button>
+</form>
+	<br />
+	  <!-- <img name="recaptcha" src="" width="200" height="32" alt="recaptcha goes here" style="background-color: #FF0000" /> -->
+	</div>
+
+</div><!--end of wrapper-->
+
+
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -56,33 +88,32 @@
     messagingSenderId: "954616968911"
   };
   firebase.initializeApp(config);
+
+	function saveToFirebase() {
+			var firstName = document.getElementById('firstName').value;
+			var lastName = document.getElementById('lastName').value;
+			var inputEmail = document.getElementById('inputEmail').value;
+			var textArea = document.getElementById('textArea').value;
+
+	    var clientObject = {
+	        email: email,
+	        firstName: firstName,
+	        lastName: lastName,
+	        clientMessage: textArea
+	    };
+
+	    firebase.database().ref('subscription-entries').push().set(clientObject)
+	        .then(function(snapshot) {
+	            success(); // some success method
+	        }, function(error) {
+	            console.log('error' + error);
+	            error(); // some error method
+	        });
+	}
+
+	saveToFirebase(clientObject);
+
 </script>
-
-<h2><i><font color="447e45">Contact Us</font></i></h2>
-
-	<div id="formwrapper">
-		<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-		<br />
-	  <!-- <img name="recaptcha" src="" width="200" height="32" alt="recaptcha goes here" style="background-color: #FF0000" /> -->
-	</div>
-
-</div><!--end of wrapper-->
 
 
 <!--the footer-->
