@@ -90,16 +90,16 @@
   firebase.initializeApp(config);
 
 	function saveToFirebase() {
-			var firstName = document.getElementById('firstName').value;
-			var lastName = document.getElementById('lastName').value;
-			var inputEmail = document.getElementById('inputEmail').value;
-			var textArea = document.getElementById('textArea').value;
+			let firstName = document.getElementById('firstName').value;
+			let lastName = document.getElementById('lastName').value;
+			let inputEmail = document.getElementById('inputEmail').value;
+			let textArea = document.getElementById('textArea').value;
 
-	    var clientObject = {
-	        email: email,
-	        firstName: firstName,
-	        lastName: lastName,
-	        clientMessage: textArea
+	    let clientObject = {
+	        clientEmail: inputEmail,
+	        fName: firstName,
+	        lName: lastName,
+	        clientMsg: textArea
 	    };
 
 	    firebase.database().ref('subscription-entries').push().set(clientObject)
@@ -109,9 +109,10 @@
 	            console.log('error' + error);
 	            error(); // some error method
 	        });
-	}
 
-	saveToFirebase(clientObject);
+			saveToFirebase(clientObject);
+}
+
 
 </script>
 
