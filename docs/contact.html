@@ -47,74 +47,44 @@
 <h2><i><font color="447e45">Contact Us</font></i></h2>
 
 	<div id="formwrapper">
-	<form>
+	<form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSfqlUC6d5X4OrTOqFIKfzxZyFep60Ge3iflWKDT36pPq_qYOQ/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
 		<div class="form-row">
 			<div class="col">
 				<label for="firstName">First Name </label>
-				<input type="text" class="form-control" placeholder="First name">
+				<input type="text" class="form-control" name="entry.1938402903" id="entry.1938402903" placeholder="First name">
 			</div>
 			<div class="col">
 				<label for="lastName">Last Name </label>
-				<input type="text" class="form-control" placeholder="Last name">
+				<input type="text" class="form-control" name="entry.1553927174" id="entry.1553927174" placeholder="Last name">
 			</div>
 		</div>
 	  <div class="form-group">
-	    <label for="inputEmail">Email address</label>
-	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+	    <label for="inputEmail">E-mail Address</label>
+	    <input type="email" class="form-control" name="entry.236841179" id="entry.236841179" aria-describedby="emailHelp" placeholder="Enter email">
 	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	  </div>
 		<div class="form-group">
 		    <label for="textArea">Message</label>
-		    <textarea class="form-control" id="textArea" rows="3">Write something here..</textarea>
+		    <textarea class="form-control" name="entry.403195138" id="entry.403195138" rows="3">Write something here..</textarea>
 		  </div>
-	  <button type="submit" class="btn btn-primary" onclick="saveToFirebase()">Submit</button>
+	  <button type="submit" value="submit" class="btn btn-primary">Submit</button>
 </form>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">var submitted=false;</script>
+<script type="text/javascript">
+$('#gform').on('submit', function(e) {
+  $('#gform *').fadeOut(2000);
+  $('#gform').prepend('Your submission has been processed...');
+  });
+</script>
 	<br />
 	  <!-- <img name="recaptcha" src="" width="200" height="32" alt="recaptcha goes here" style="background-color: #FF0000" /> -->
 	</div>
 
 </div><!--end of wrapper-->
 
-
-<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAyqDH-GdnS-Sl0KH9JbErFCn5AZQI8RAk",
-    authDomain: "simply-crypto-c9d38.firebaseapp.com",
-    databaseURL: "https://simply-crypto-c9d38.firebaseio.com",
-    projectId: "simply-crypto-c9d38",
-    storageBucket: "",
-    messagingSenderId: "954616968911"
-  };
-  firebase.initializeApp(config);
-
-	function saveToFirebase() {
-			let firstName = document.getElementById('firstName').value;
-			let lastName = document.getElementById('lastName').value;
-			let inputEmail = document.getElementById('inputEmail').value;
-			let textArea = document.getElementById('textArea').value;
-
-	    let clientObject = {
-	        clientEmail: inputEmail,
-	        fName: firstName,
-	        lName: lastName,
-	        clientMsg: textArea
-	    };
-
-	    firebase.database().ref('subscription-entries').push().set(clientObject)
-	        .then(function(snapshot) {
-	            success(); // some success method
-	        }, function(error) {
-	            console.log('error' + error);
-	            error(); // some error method
-	        });
-
-			saveToFirebase(clientObject);
-}
-
-
-</script>
 
 
 <!--the footer-->
