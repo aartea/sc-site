@@ -256,23 +256,14 @@ a.navfooter:hover{color:black;}
 	}
 
 /*for the differnt service plans*/
-#planwrap{
-	overflow:inherit;
-	width:100%;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:-.5%;
-	padding:7px;
-	padding-bottom:15px;
-	padding-left: 350px;
-	}
+
 
 #plan{
-	margin-left:5%;
-	margin-bottom:5%;
+  margin: auto;
 	float:left;
 	width:350px;
 	height:auto;
+	display: block;
 	background-color:white;
 	border-radius:17px 17px 17px 17px;
 	/*for the box shadow*/
