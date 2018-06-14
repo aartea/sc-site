@@ -50,10 +50,16 @@ h2{
 	font-size: 30px;
 	}
 
+.center-row{
+	/* margin: auto;
+	max-width: 600px; */
+	margin: 0 18.75em;
+}
 .row{
 	/* width: 800px; */
 	margin: 0 auto;
-  padding-left: 400px;
+  padding-left: 125px;
+	padding-right: 125px;
 }
 
 #wrapper{
