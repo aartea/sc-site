@@ -51,9 +51,8 @@ h2{
 	}
 
 .center-row{
-	/* margin: auto;
-	max-width: 600px; */
-	margin: 0 300px;
+	max-width: 1080px;
+	margin: 0 auto;
 }
 .row{
 	/* width: 800px; */
