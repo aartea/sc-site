@@ -29,6 +29,12 @@ body{
 	height: 50px;
 }
 
+#blog-photo{
+	margin: auto;
+	width:50%;
+	padding: 10px;
+}
+
 #social{
 	float:right;
 	background-color:white;
